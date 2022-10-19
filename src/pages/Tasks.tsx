@@ -58,8 +58,17 @@ export default function Transactions() {
     console.log(response.data);
   }
 
+  const editTask = () => {};
+  const deleteTask = () => {};
+
   return (
-    <Box display="flex" flexDirection="column" gap="40px">
+    <Box
+      p="40px"
+      display="flex"
+      justifyContent="center"
+      flexDirection="column"
+      gap="40px"
+    >
       <Box display="flex" flexDirection="column" gap="16px">
         <TextField
           label="Tittle"
@@ -73,16 +82,14 @@ export default function Transactions() {
           onChange={(e) => setDescription(e.target.value)}
         />
 
-        <Button onClick={createNewTask} variant="outlined">
+        <Button
+          sx={{ width: "30%", marginLeft: "32%" }}
+          onClick={createNewTask}
+          variant="outlined"
+        >
           Criar Transação
         </Button>
       </Box>
-
-      <Box
-        display="flex"
-        justifyContent="space-evenly"
-        sx={{ backgroundColor: "red" }}
-      ></Box>
 
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
@@ -90,6 +97,7 @@ export default function Transactions() {
             <TableRow>
               <TableCell>Title</TableCell>
               <TableCell>Description</TableCell>
+              <TableCell>Edit</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -97,6 +105,14 @@ export default function Transactions() {
               <TableRow key={row.id}>
                 <TableCell>{row.title}</TableCell>
                 <TableCell>{row.description}</TableCell>
+                <TableCell>
+                  <Button onClick={editTask} variant="outlined">
+                    Edit
+                  </Button>
+                  <Button onClick={deleteTask} variant="outlined">
+                    Delete
+                  </Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

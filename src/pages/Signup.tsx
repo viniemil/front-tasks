@@ -9,7 +9,7 @@ export const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [cpf, setCpf] = useState("");
   const [email, setEmail] = useState("");
-  const [age, setAge] = useState<Number>("");
+  const [age, setAge] = useState<Number>();
   const navigate = useNavigate();
 
   const testEmailRegex = /@/;
@@ -44,12 +44,12 @@ export const Signup = () => {
     try {
       console.log("===BODY===", newUser);
       const data: AxiosResponse = await axios.post(
-        "http://localhost:3333/" + "user",
+        process.env.REACT_APP_URL + "user",
         newUser
       );
       navigate("/login");
     } catch (error) {
-      alert(error.response.data.message);
+      console.log(error);
     }
   };
 
@@ -69,7 +69,7 @@ export const Signup = () => {
         sx={{
           width: "30vw",
         }}
-        elevation="24"
+        elevation={24}
       >
         <Box display="flex" flexDirection="column" gap={1} padding="40px">
           <TextField

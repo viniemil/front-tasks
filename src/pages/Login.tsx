@@ -86,7 +86,7 @@ export const Login = () => {
         sx={{
           width: "30vw",
         }}
-        elevation="24"
+        elevation={24}
       >
         <Box display="flex" flexDirection="column" gap={2} padding="40px">
           <TextField
@@ -97,7 +97,7 @@ export const Login = () => {
             helperText={
               !testEmailRegex.test(email) ? "Digite um e-mail válido" : ""
             }
-            error={email.length > 1 ? !testEmailRegex.test(email) : email}
+            error={email.length > 1 ? !testEmailRegex.test(email) : false}
           />
           <TextField
             id="outlined-password"
